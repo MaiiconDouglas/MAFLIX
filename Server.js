@@ -1,12 +1,16 @@
+var process
+
 // eslint-disable-next-line no-undef
 const jsonServer = require('json-server');
 
-const Server = jsonServer.create();
-const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
 
-Server.use(middlewares)
-Server.use(router)
-Server.listen(3000, () => {
-  console.log('JSON Server is running')
+const port = process.env.PORT || 8080;
+
+server.use(middlewares);
+server.use(router);
+server.listen(port, () => {
+  console.log('JSON server is running' `${port}`);
 });
